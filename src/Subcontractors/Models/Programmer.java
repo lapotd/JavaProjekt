@@ -1,5 +1,6 @@
 package Subcontractors.Models;
 
+import ProjectGenerator.Models.Project;
 import Subcontractors.Enums.Skills;
 import Subcontractors.Enums.WorkerType;
 
@@ -15,4 +16,13 @@ public class Programmer extends Worker{
     public Double lateRisk;
     public Double badCodeRisk;
     public Skills[] skillSet;
+
+    public void Work(Project project){
+        if(project.isProjectBuggyAndDetected){
+            project.isProjectBuggy = false;
+            project.isProjectBuggyAndDetected = false;
+        }else{
+
+        }
+    }
 }

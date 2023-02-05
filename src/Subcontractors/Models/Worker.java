@@ -1,8 +1,5 @@
 package Subcontractors.Models;
 
-import Subcontractors.Enums.Skills;
-import Subcontractors.Enums.WorkerType;
-
 public class Worker {
     public Double pay;
     public Double hireFee;
@@ -13,6 +10,8 @@ public class Worker {
         this.hireFee = hireFee;
         this.fireFee = fireFee;
     }
+
+    public void Work(){};
 
 
 }

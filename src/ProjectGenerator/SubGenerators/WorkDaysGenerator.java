@@ -1,6 +1,7 @@
 package ProjectGenerator.SubGenerators;
 
 import ProjectGenerator.Enums.ProjectDifficulty;
+import ProjectGenerator.Models.WorkDay;
 import ProjectGenerator.Models.WorkDays;
 
 import java.util.Random;
@@ -24,29 +25,29 @@ public class WorkDaysGenerator {
     }
 
     private static WorkDays GenerateEasyWork(Random randomizer){
-        Integer[] easyWorkDays = new WorkDays().ToArray();
-        easyWorkDays[randomizer.nextInt(6)] = randomizer.nextInt(3) + 1;
+        WorkDay[] easyWorkDays = new WorkDays().ToArray();
+        easyWorkDays[randomizer.nextInt(6)].amount = randomizer.nextInt(3) + 1;
         return WorkDays.ArrayToWorkDays(easyWorkDays);
     }
 
     private static WorkDays GenerateMediumWork(Random randomizer){
         Integer randomWorkType = randomizer.nextInt(5);
         Integer randomWorkDays = randomizer.nextInt(3) + 1;
-        Integer[] mediumWorkDays = new WorkDays().ToArray();
+        WorkDay[] mediumWorkDays = new WorkDays().ToArray();
 
-        mediumWorkDays[randomWorkType] = randomWorkDays;
-        mediumWorkDays[randomWorkType + 1] = randomWorkDays;
+        mediumWorkDays[randomWorkType].amount = randomWorkDays;
+        mediumWorkDays[randomWorkType + 1].amount = randomWorkDays;
 
         return WorkDays.ArrayToWorkDays(mediumWorkDays);
     }
     private static WorkDays GenerateComplexWork(Random randomizer){
         Integer randomWorkType = randomizer.nextInt(4);
         Integer randomWorkDays = randomizer.nextInt(3) + 1;
-        Integer[] complexWorkDays = new WorkDays().ToArray();
+        WorkDay[] complexWorkDays = new WorkDays().ToArray();
 
-        complexWorkDays[randomWorkType] = randomWorkDays;
-        complexWorkDays[randomWorkType + 1] = randomWorkDays;
-        complexWorkDays[randomWorkType + 2] = randomWorkDays;
+        complexWorkDays[randomWorkType].amount = randomWorkDays;
+        complexWorkDays[randomWorkType + 1].amount = randomWorkDays;
+        complexWorkDays[randomWorkType + 2].amount = randomWorkDays;
 
         return WorkDays.ArrayToWorkDays(complexWorkDays);
     }

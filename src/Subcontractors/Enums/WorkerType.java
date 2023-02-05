@@ -4,5 +4,6 @@ public enum WorkerType {
     programmer,
     tester,
     seller,
-    friend
+    friend,
+    player
 }

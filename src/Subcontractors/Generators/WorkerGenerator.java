@@ -4,6 +4,8 @@ import Subcontractors.Enums.Skills;
 import Subcontractors.Enums.WorkerType;
 import Subcontractors.Models.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class WorkerGenerator {
@@ -23,13 +25,18 @@ public class WorkerGenerator {
             }
         }
     }
-    public static Friend[] GenerateFriends(){
+
+    public static Player GeneratePlayer(){
+        return new Player();
+    }
+
+    public static List<Friend> GenerateFriends(){
         Friend[] friends = new Friend[]{
                 WorkerGenerator.GenerateAllKnowingFriend(),
                 WorkerGenerator.GenerateMediocreStudent(),
                 WorkerGenerator.GenerateBestStudent()
         };
-        return friends;
+        return Arrays.asList(friends);
     }
 
     private static Programmer GenerateProgrammer(){

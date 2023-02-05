@@ -1,23 +1,28 @@
 package ProjectGenerator.Models;
 
+import Subcontractors.Enums.Skills;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class WorkDays {
-    public Integer frontEndWorkDays;
-    public Integer backEndWorkDays;
-    public Integer databaseWorkDays;
-    public Integer mobileWorkDays;
-    public Integer wordpressWorkDays;
-    public Integer prestashopWorkDays;
+    public WorkDay frontEndWorkDays;
+    public WorkDay backEndWorkDays;
+    public WorkDay databaseWorkDays;
+    public WorkDay mobileWorkDays;
+    public WorkDay wordpressWorkDays;
+    public WorkDay prestashopWorkDays;
 
     public WorkDays() {
-        this.frontEndWorkDays = 0;
-        this.backEndWorkDays = 0;
-        this.databaseWorkDays = 0;
-        this.mobileWorkDays = 0;
-        this.wordpressWorkDays = 0;
-        this.prestashopWorkDays = 0;
+        this.frontEndWorkDays = new WorkDay(0,Skills.frontEnd);
+        this.backEndWorkDays = new WorkDay(0,Skills.backEnd);
+        this.databaseWorkDays = new WorkDay(0,Skills.database);
+        this.mobileWorkDays = new WorkDay(0,Skills.mobile);
+        this.wordpressWorkDays = new WorkDay(0,Skills.wordpress);
+        this.prestashopWorkDays = new WorkDay(0,Skills.prestashop);
     }
 
-    private WorkDays(Integer[] array) {
+    private WorkDays(WorkDay[] array) {
         this.frontEndWorkDays = array[0];
         this.backEndWorkDays = array[1];
         this.databaseWorkDays = array[2];
@@ -26,12 +31,16 @@ public class WorkDays {
         this.prestashopWorkDays = array[5];
     }
 
-    public Integer[] ToArray(){
-        return new Integer[]{this.frontEndWorkDays, this.backEndWorkDays, this.databaseWorkDays, this.mobileWorkDays,
+    public WorkDay[] ToArray(){
+        return new WorkDay[]{this.frontEndWorkDays, this.backEndWorkDays, this.databaseWorkDays, this.mobileWorkDays,
                 this.wordpressWorkDays, this.prestashopWorkDays};
     }
 
-    public static WorkDays ArrayToWorkDays(Integer[] array){
+    public List<WorkDay> ToList(){
+        return Arrays.stream(this.ToArray()).toList();
+    }
+
+    public static WorkDays ArrayToWorkDays(WorkDay[] array){
         return new WorkDays(array);
     }
 }

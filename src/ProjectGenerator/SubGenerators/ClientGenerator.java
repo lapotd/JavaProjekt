@@ -6,7 +6,7 @@ import ProjectGenerator.Models.Client;
 import java.util.Random;
 
 public class ClientGenerator {
-    public Client GenerateClient(Random randomizer){
+    public static Client GenerateClient(Random randomizer){
         ClientType clientType = ClientType.values()[randomizer.nextInt(3)];
 
         switch (clientType){
@@ -25,18 +25,18 @@ public class ClientGenerator {
         }
     }
 
-    private Client GenerateChilledOutClient(Random randomizer) {
+    private static Client GenerateChilledOutClient(Random randomizer) {
         return new Client(NameGenerator.GenerateClientName(randomizer),
                 0.3, 0.0, 0.2, 0.0, 0.0);
     }
 
-    private Client GenerateNeedyClient(Random randomizer) {
+    private static Client GenerateNeedyClient(Random randomizer) {
         return new Client(NameGenerator.GenerateClientName(randomizer),
-                0.0, 0.0, 0.0, 50.0, 0.0);
+                0.0, 0.0, 0.0, 0.5, 0.0);
     }
 
-    private Client GenerateWorstClient(Random randomizer) {
+    private static Client GenerateWorstClient(Random randomizer) {
         return new Client(NameGenerator.GenerateClientName(randomizer),
-                0.3, 0.05,0.2, 100.0, 0.01);
+                0.3, 0.05,0.2, 1.0, 0.01);
     }
 }

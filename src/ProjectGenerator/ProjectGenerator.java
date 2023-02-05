@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class ProjectGenerator {
 
-    public void GenerateProject(Date gameDate){
+    public Project GenerateProject(Date gameDate){
         Random randomizer = new Random();
         String projectName = NameGenerator.GenerateProjectName(randomizer);
         ProjectDifficulty difficulty = DifficultyGenerator.Generate(randomizer);
@@ -22,7 +22,7 @@ public class ProjectGenerator {
         Double pay = PayGenerator.GeneratePay(randomizer,difficulty);
         Double lateFee = PayGenerator.GenerateLateFee(pay);
 
-        Project project = new Project(projectName,client,workDays,deadline,daysToPayAfterFinish,lateFee,pay,difficulty);
+        return new Project(projectName,client,workDays,deadline,daysToPayAfterFinish,lateFee,pay,difficulty);
     }
 
 }

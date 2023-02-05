@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class ProjectGenerator {
 
-    public Project GenerateProject(Date gameDate){
+    public static Project GenerateProject(Date gameDate){
         Random randomizer = new Random();
         String projectName = NameGenerator.GenerateProjectName(randomizer);
         ProjectDifficulty difficulty = DifficultyGenerator.Generate(randomizer);

@@ -7,7 +7,7 @@ import java.util.Date;
 public class Project {
 
     public String name;
-    public String client;
+    public Client client;
     public WorkDays workDays;
     public Date deadline;
     public Integer daysToPayAfterFinish;

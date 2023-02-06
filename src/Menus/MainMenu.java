@@ -1,6 +1,7 @@
 package Menus;
 
 import Game.Actions.PlayerActions;
+import Game.Models.Game;
 import Menus.AvailableWorkers.AvailableWorkersMenu;
 import Menus.YourProjects.YourProjectsMenu;
 import Menus.AvailableProjects.AvailableProjectsMenu;
@@ -16,7 +17,8 @@ public class MainMenu implements IMenu{
                         "3. Spedz dzien na szukaniu projektow\n" +
                         "4. Sprawdz wolnych pracownikow\n" +
                         "5. Sprawdz obecnych pracownikow\n" +
-                        "6. przeznacz dzień na rozliczenia z urzędami\n";
+                        "6. Przeznacz dzień na rozliczenia z urzędami\n" +
+                        "7. Pomin dzien\n";
     }
 
     @Override
@@ -42,8 +44,12 @@ public class MainMenu implements IMenu{
                 PlayerActions.SpendDayFilingTaxes();
                 return new MainMenu();
             }
+            case "7" ->{
+                Game.getGame().dayEnd.DayCycle();
+                return this;
+            }
             default -> {
-                return new AvailableProjectsMenu();
+                return this;
             }
         }
     }

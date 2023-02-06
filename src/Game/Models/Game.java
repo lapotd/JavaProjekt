@@ -28,6 +28,8 @@ public class Game {
     public TaxFill taxFill;
     public Double taxesToPay;
     public Boolean gameOver;
+    public Boolean gameWon;
+    public Integer projectsPassed;
 
     private Game(){
         this.currentGameDate = new GregorianCalendar(2020,Calendar.JANUARY,1).getTime();
@@ -44,6 +46,9 @@ public class Game {
         this.workers = new ArrayList<Worker>();
         this.taxesDone = false;
         this.gameOver = false;
+        this.gameWon = false;
+        this.projectsPassed = 0;
+        this.taxesToPay = 0.0;
 
         this.availableWorkers.add(WorkerGenerator.GenerateCompanyWorker(WorkerType.programmer));
         this.availableWorkers.add(WorkerGenerator.GenerateCompanyWorker(WorkerType.programmer));
@@ -60,5 +65,11 @@ public class Game {
             game = new Game();
         }
         return game;
+    }
+
+    public void CheckWinConditions(){
+        if(this.projectsPassed >= 3 && this.balance > 2000.0){
+            this.gameWon = true;
+        }
     }
 }

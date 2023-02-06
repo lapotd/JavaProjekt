@@ -53,6 +53,10 @@ public class YourProjectTabMenu implements IMenu {
             System.out.println("Stestowano!");
             return this;
         }
+        else if(decision.equals("oddaj")){
+            PlayerActions.returnProject(this.project);
+            return new YourProjectsMenu();
+        }
         return new YourProjectsMenu();
     }
 }

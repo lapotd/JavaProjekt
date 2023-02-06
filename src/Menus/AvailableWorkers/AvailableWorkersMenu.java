@@ -39,7 +39,7 @@ public class AvailableWorkersMenu implements IMenu {
             return new MainMenu();
         }
         else{
-            return new YourWorkerTabMenu(workers.get(Integer.parseInt(decision)-1));
+            return new AvailableWorkerTabMenu(workers.get(Integer.parseInt(decision)-1));
         }
     }
 }

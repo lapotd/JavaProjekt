@@ -36,6 +36,16 @@ public class WorkDays {
                 this.wordpressWorkDays, this.prestashopWorkDays};
     }
 
+    public Boolean isProjectFinished(){
+        Boolean finished = true;
+        for(WorkDay workDay : this.ToArray()){
+            if (workDay.amount > 0){
+                finished = false;
+            }
+        }
+        return finished;
+    }
+
     public String ToString(){
         WorkDay[] tableOfWorkDays = this.ToArray();
         String output = "\n";

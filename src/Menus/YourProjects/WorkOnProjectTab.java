@@ -37,22 +37,19 @@ public class WorkOnProjectTab implements IMenu {
             return new YourProjectTabMenu(this.project.name);
         }
         else{
-            for(Skills skill : Skills.values()){
-                if(decision.equals(skill.toString())){
-                    if(PlayerActions.spendDayWorking(this.project, skill)){
+            for(WorkDay workDay : project.workDays.ToArray()){
+                if(decision.equals(workDay.skillRequired.toString())){
+                    if(PlayerActions.spendDayWorking(this.project, workDay.skillRequired)){
                         System.out.println("Pracowano!");
+                        return this;
                     }else{
                         System.out.println("Nie ma nad czym pracowac!");
+                        return this;
                     }
-
                 }
-                else{
-                    System.out.println("Nie masz takiego skilla! wpisz back aby wrocic");
-                }
-                return this;
             }
+            System.out.println("Nie masz takiego skilla! wpisz back aby wrocic");
+            return this;
         }
-
-        return new YourProjectsMenu();
     }
 }

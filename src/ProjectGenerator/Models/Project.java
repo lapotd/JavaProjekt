@@ -27,7 +27,9 @@ public class Project {
     public Double lateFee;
     public Double pay;
     public ProjectDifficulty projectDifficulty;
-    public Boolean isProjectFinished;
     public Boolean isProjectBuggy;
     public Boolean isProjectBuggyAndDetected;
+    public Boolean isProjectFinished(){
+        return this.workDays.isProjectFinished();
+    }
 }

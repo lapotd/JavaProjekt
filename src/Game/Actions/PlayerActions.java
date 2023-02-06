@@ -20,7 +20,7 @@ public class PlayerActions {
     public static void SpendDaySearchingForProject(){
         Game game = Game.getGame();
         game.projectSearch.SpendDaySearching();
-        game.dayEnd.DayEnds();
+        game.dayEnd.DayCycle();
     }
 
     public static void HireWorker(Worker worker){
@@ -37,7 +37,7 @@ public class PlayerActions {
     public static void SpendDayFilingTaxes(){
         Game game = Game.getGame();
         game.taxFill.SpendDayFilingTaxes();
-        game.dayEnd.DayEnds();
+        game.dayEnd.DayCycle();
         System.out.println("Do spelnienia obowiazku zglaszania podatkow zostalo: "
                 + game.taxFill.daysToFillTax + "dni");
     }
@@ -58,7 +58,7 @@ public class PlayerActions {
                 .filter(x -> x.skillRequired == skill).findFirst();
         if(optional.isPresent() && optional.get().amount>0){
             optional.get().amount-=1;
-            Game.getGame().dayEnd.DayEnds();
+            Game.getGame().dayEnd.DayCycle();
             return true;
         }
         else{
@@ -70,12 +70,13 @@ public class PlayerActions {
         if(project.isProjectBuggy){
             project.isProjectBuggyAndDetected = true;
         }
-        Game.getGame().dayEnd.DayEnds();
+        Game.getGame().dayEnd.DayCycle();
     }
 
     public static void returnProject(Project project){
         Random randomizer = new Random();
         Double d100Throw = randomizer.nextDouble(0,1);
+        ReturnProject.Return(d100Throw, project);
 
     }
 }

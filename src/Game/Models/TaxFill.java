@@ -16,11 +16,16 @@ public class TaxFill {
     }
 
     public Boolean SpendDayFilingTaxes(){
-        //returns true if taxes were filled enough times
-        if(this.daysToFillTax == 1){
-            Game.getGame().taxesDone = true;
+        //returns true if taxes were filled enough times\
+        if(this.daysToFillTax > 0){
+            this.daysToFillTax -= 1;
+            if(this.daysToFillTax == 0){
+                Game.getGame().taxesDone = true;
+            }
             return true;
-        }else{
+        }
+        else{
+            System.out.println("Twoje podatki juz sa zrobione!");
             return false;
         }
     }

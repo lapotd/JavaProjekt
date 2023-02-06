@@ -4,6 +4,7 @@ import Game.Actions.PlayerActions;
 import Menus.AvailableWorkers.AvailableWorkersMenu;
 import Menus.YourProjects.YourProjectsMenu;
 import Menus.AvailableProjects.AvailableProjectsMenu;
+import Menus.YourWorkers.YourWorkersMenu;
 
 public class MainMenu implements IMenu{
     @Override
@@ -29,10 +30,17 @@ public class MainMenu implements IMenu{
             }
             case "3" ->{
                 PlayerActions.SpendDaySearchingForProject();
-                return new AvailableProjectsMenu();
+                return new MainMenu();
             }
             case "4" ->{
                 return new AvailableWorkersMenu();
+            }
+            case "5" ->{
+                return new YourWorkersMenu();
+            }
+            case "6" ->{
+                PlayerActions.SpendDayFilingTaxes();
+                return new MainMenu();
             }
             default -> {
                 return new AvailableProjectsMenu();

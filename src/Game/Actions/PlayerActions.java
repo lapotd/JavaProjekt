@@ -34,6 +34,14 @@ public class PlayerActions {
         game.availableWorkers.remove(worker);
     }
 
+    public static void SpendDayFilingTaxes(){
+        Game game = Game.getGame();
+        game.taxFill.SpendDayFilingTaxes();
+        game.dayEnd.DayEnds();
+        System.out.println("Do spelnienia obowiazku zglaszania podatkow zostalo: "
+                + game.taxFill.daysToFillTax + "dni");
+    }
+
     public static void FireWorker(Worker worker){
         Game game = Game.getGame();
         if(game.balance < worker.fireFee){

@@ -1,4 +1,4 @@
-package Menus.AvailableWorkers;
+package Menus.YourWorkers;
 
 
 import Game.Actions.PlayerActions;
@@ -7,10 +7,10 @@ import Subcontractors.Enums.WorkerType;
 import Subcontractors.Models.Programmer;
 import Subcontractors.Models.Worker;
 
-public class AvailableWorkerTabMenu implements IMenu {
+public class YourWorkerTabMenu implements IMenu {
     public Worker worker;
 
-    public AvailableWorkerTabMenu(Worker worker){
+    public YourWorkerTabMenu(Worker worker){
         this.worker = worker;
     }
 
@@ -27,7 +27,7 @@ public class AvailableWorkerTabMenu implements IMenu {
         if(worker.workerType == WorkerType.programmer){
             menuDisplay = menuDisplay + ((Programmer)worker).skillsToString();
         }
-        menuDisplay = menuDisplay + "\nAby zatrudnic pracownika wpisz zatrudniam, aby wrocic wpisz back";
+        menuDisplay = menuDisplay + "\nAby zwolnic pracownika wpisz zwalniam, aby wrocic wpisz back";
 
         return menuDisplay;
     }
@@ -35,12 +35,12 @@ public class AvailableWorkerTabMenu implements IMenu {
     @Override
     public IMenu HandleDecision(String decision) {
         if(decision.equals("back")){
-            return new AvailableWorkersMenu();
+            return new YourWorkersMenu();
         }
-        else if(decision.equals("zatrudniam")){
-            PlayerActions.HireWorker(this.worker);
-            return new AvailableWorkersMenu();
+        else if(decision.equals("zwalniam")){
+            PlayerActions.FireWorker(this.worker);
+            return new YourWorkersMenu();
         }
-        return new AvailableWorkersMenu();
+        return new YourWorkersMenu();
     }
 }

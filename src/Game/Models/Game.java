@@ -1,7 +1,6 @@
 package Game.Models;
 
 import Game.Actions.DayEnd;
-import Game.Models.ProjectSearch;
 import ProjectGenerator.Models.Project;
 import ProjectGenerator.ProjectGenerator;
 import Subcontractors.Enums.WorkerType;
@@ -10,9 +9,7 @@ import Subcontractors.Models.Friend;
 import Subcontractors.Models.Player;
 import Subcontractors.Models.Worker;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Game {
     private static Game game;
@@ -27,17 +24,26 @@ public class Game {
     public List<Project> projects;
     public List<Project> availableProjects;
     public ProjectSearch projectSearch;
+    public Boolean taxesDone;
+    public TaxFill taxFill;
+    public Double taxesToPay;
+    public Boolean gameOver;
 
     private Game(){
-        this.currentGameDate = new Date(2020,1,1);
-        this.player = WorkerGenerator.GeneratePlayer();
+        this.currentGameDate = new GregorianCalendar(2020,Calendar.JANUARY,1).getTime();
         this.balance = 2000.0;
+        this.player = WorkerGenerator.GeneratePlayer();
         this.friends = WorkerGenerator.GenerateFriends();
         this.projectSearch = ProjectSearch.getProjectSearch();
+        this.taxFill = TaxFill.getTaxFill();
+        this.blockedBudgets = new ArrayList<BlockedBudget>();
+        this.dayEnd = new DayEnd();
         this.availableWorkers = new ArrayList<Worker>();
         this.availableProjects = new ArrayList<Project>();
         this.projects = new ArrayList<Project>();
         this.workers = new ArrayList<Worker>();
+        this.taxesDone = false;
+        this.gameOver = false;
 
         this.availableWorkers.add(WorkerGenerator.GenerateCompanyWorker(WorkerType.programmer));
         this.availableWorkers.add(WorkerGenerator.GenerateCompanyWorker(WorkerType.programmer));

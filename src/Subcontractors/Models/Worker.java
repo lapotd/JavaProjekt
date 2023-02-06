@@ -14,7 +14,7 @@ public class Worker {
         this.fireFee = fireFee;
     }
 
-    public void Work(){};
+    public void Work(){}
 
 
 }

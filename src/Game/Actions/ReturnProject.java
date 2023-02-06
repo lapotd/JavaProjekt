@@ -9,26 +9,39 @@ import java.util.Date;
 
 public class ReturnProject {
     public static void Return(Double d100Throw, Project project){
+        if(!project.isProjectFinished){
+            System.out.println("Nie mozesz oddac nieukonczonego projektu!");
+            return;
+        }
+
         if(project.isProjectBuggy){
             if(d100Throw < project.client.consequencesForNonWorkingProject){
                 Game.getGame().projects.remove(project);
+                System.out.println("Klient zauwazyl bugi i zabral ci projekt");
             }
         }
 
         if(project.deadline.getTime() < Game.getGame().currentGameDate.getTime()){
             if(d100Throw >= project.client.avoidAfterDeadlineFeeChance){
+                System.out.println("Klient zauwazyl spoznienie i zabiera czesc wynagrodzenia");
                 project.pay -= project.lateFee;
             }
         }
 
         if(d100Throw < project.client.payMonthLateChance){
+            System.out.println("Klient zaplaci po dodatkowym miesiacu :(");
             ReturnProject.PostponePayDate(30,project.pay, project.daysToPayAfterFinish);
         }else if(d100Throw < project.client.payWeekLateChance){
+            System.out.println("Klient zaplaci po dodatkowym tygodniu :(");
             ReturnProject.PostponePayDate(7,project.pay, project.daysToPayAfterFinish);
         }
         else{
             ReturnProject.PostponePayDate(0,project.pay, project.daysToPayAfterFinish);
         }
+
+        Game game = Game.getGame();
+        game.projects.remove(project);
+        System.out.println("Zdano projekt!");
 
     }
 

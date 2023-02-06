@@ -1,14 +1,13 @@
-package Menus.AvailableWorkers;
+package Menus.YourWorkers;
 
 import Game.Models.Game;
 import Menus.IMenu;
 import Menus.MainMenu;
-import Menus.YourWorkers.YourWorkerTabMenu;
 import Subcontractors.Models.Worker;
 
 import java.util.List;
 
-public class AvailableWorkersMenu implements IMenu {
+public class YourWorkersMenu implements IMenu {
 
     public List<Worker> workers;
 
@@ -16,15 +15,15 @@ public class AvailableWorkersMenu implements IMenu {
     public String ShowMenu() {
         Game game = Game.getGame();
         Integer workerIterator = 1;
-        this.workers = game.availableWorkers;
+        this.workers = game.workers;
 
         if(workers.isEmpty()){
-            return "Nie ma wolnych pracownikow! Wpisz back aby wrocic";
+            return "Nie masz pracownikow! Wpisz back aby wrocic";
 
         }
 
         String menuContent = "Wybierz pracownika" + "\n";
-        for(Worker worker : game.availableWorkers){
+        for(Worker worker : game.workers){
             menuContent = menuContent + workerIterator + "." + worker.workerType + "\n";
             workerIterator +=1;
         }

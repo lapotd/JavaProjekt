@@ -14,7 +14,7 @@ public class YourProjectsMenu implements IMenu {
             return "Lista projektow jest pusta! Zakontraktuj nowy - wroc komenda back";
         }
 
-        String menuContent = "Wybierz projekt przez wpisanie pelnej nazwy" + "\n";
+        String menuContent = "Twoje projekty: \n" +"Wybierz projekt przez wpisanie pelnej nazwy" + "\n";
         for(Project project : game.projects){
             menuContent = menuContent + "- " + project.name + "\n";
         }

@@ -31,7 +31,10 @@ public class YourProjectTabMenu implements IMenu {
                 "Dni wymagane: " + this.project.workDays.ToString() + "\n" +
                 "Oplata za opoznienie: " + this.project.lateFee + "\n" +
                 "Deadline: " + this.project.deadline.toString() + "\n" +
-                "Aby wrocic wpisz back" + "\n";
+                (this.project.isProjectBuggyAndDetected ? "Projekt jest pobugowany!" : "") + "\n" +
+                "Aby wrocic wpisz back, aby pracowac nad projektem wpisz pracuj, " +
+                "aby przetestowac projekt, wpisz testuj" +
+                " aby oddac projekt wpisz oddaj" + "\n";
 
         return MenuDisplay;
     }
@@ -41,9 +44,14 @@ public class YourProjectTabMenu implements IMenu {
         if(decision.equals("back")){
             return new YourProjectsMenu();
         }
-        else if(decision.equals("wybieram")){
-            PlayerActions.SignContract(this.project);
-            return new YourProjectsMenu();
+        else if(decision.equals("pracuj")){
+            return new WorkOnProjectTab(this.project);
+
+        }
+        else if(decision.equals("testuj")){
+            PlayerActions.spendDayTesting(this.project);
+            System.out.println("Stestowano!");
+            return this;
         }
         return new YourProjectsMenu();
     }

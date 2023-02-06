@@ -11,7 +11,7 @@ public class Main {
         IMenu menu = new MainMenu();
         Scanner scanner = new Scanner(System.in);
         String decision = "";
-        while(true){
+        while(!game.gameOver){
             System.out.print(menu.ShowMenu());
             System.out.println("\nCo wybierasz? : ");
             decision = scanner.nextLine();

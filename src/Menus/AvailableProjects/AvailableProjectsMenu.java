@@ -10,11 +10,12 @@ public class AvailableProjectsMenu implements IMenu {
     @Override
     public String ShowMenu() {
         Game game = Game.getGame();
-        String menuContent = "Wybierz projekt przez wpisanie pelnej nazwy" + "\n";
+        String menuContent = "Nowe projekty : \n" +
+                "Wybierz projekt przez wpisanie pelnej nazwy" + "\n";
         for(Project project : game.availableProjects){
             menuContent = menuContent + "- " + project.name + "\n";
         }
-        menuContent = menuContent + "Wpisz back i zatwierdz by wyjsc do glownego menu";
+        menuContent = menuContent + "Wpisz back i zatwierdz aby wyjsc do glownego menu";
 
         return menuContent;
     }

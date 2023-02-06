@@ -15,6 +15,8 @@ public class Project {
         this.lateFee = lateFee;
         this.pay = pay;
         this.projectDifficulty = projectDifficulty;
+        this.isProjectBuggyAndDetected = false;
+        this.isProjectBuggy = false;
     }
 
     public String name;

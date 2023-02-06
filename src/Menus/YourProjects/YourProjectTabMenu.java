@@ -1,4 +1,4 @@
-package Menus.NewProjects;
+package Menus.YourProjects;
 
 
 import Game.Actions.PlayerActions;
@@ -6,17 +6,17 @@ import Game.Models.Game;
 import Menus.IMenu;
 import ProjectGenerator.Models.Project;
 
-public class NewProjectTabMenu implements IMenu {
+public class YourProjectTabMenu implements IMenu {
     public String projectName;
     public Project project;
 
-    public NewProjectTabMenu(String projectName){
+    public YourProjectTabMenu(String projectName){
         this.projectName = projectName;
     }
 
     @Override
     public String ShowMenu() {
-        for(Project project : Game.getGame().availableProjects){
+        for(Project project : Game.getGame().projects){
             if(project.name.equals(this.projectName)){
                 this.project = project;
             }
@@ -31,7 +31,7 @@ public class NewProjectTabMenu implements IMenu {
                 "Dni wymagane: " + this.project.workDays.ToString() + "\n" +
                 "Oplata za opoznienie: " + this.project.lateFee + "\n" +
                 "Deadline: " + this.project.deadline.toString() + "\n" +
-                "Aby wybrac projekt i podpisac kontrakt wpisz wybieram, aby wrocic wpisz back" + "\n";
+                "Aby wrocic wpisz back" + "\n";
 
         return MenuDisplay;
     }
@@ -39,12 +39,12 @@ public class NewProjectTabMenu implements IMenu {
     @Override
     public IMenu HandleDecision(String decision) {
         if(decision.equals("back")){
-            return new NewProjectsMenu();
+            return new YourProjectsMenu();
         }
         else if(decision.equals("wybieram")){
-            PlayerActions.signContract(this.project);
-            return new NewProjectsMenu();
+            PlayerActions.SignContract(this.project);
+            return new YourProjectsMenu();
         }
-        return new NewProjectsMenu();
+        return new YourProjectsMenu();
     }
 }

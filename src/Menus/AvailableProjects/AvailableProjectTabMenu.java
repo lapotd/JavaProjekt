@@ -6,8 +6,6 @@ import Game.Models.Game;
 import Menus.IMenu;
 import ProjectGenerator.Models.Project;
 
-import java.util.Arrays;
-
 public class AvailableProjectTabMenu implements IMenu {
     public String projectName;
     public Project project;
@@ -18,7 +16,7 @@ public class AvailableProjectTabMenu implements IMenu {
 
     @Override
     public String ShowMenu() {
-        for(Project project : Game.getGame().projects){
+        for(Project project : Game.getGame().availableProjects){
             if(project.name.equals(this.projectName)){
                 this.project = project;
             }
@@ -33,7 +31,7 @@ public class AvailableProjectTabMenu implements IMenu {
                 "Dni wymagane: " + this.project.workDays.ToString() + "\n" +
                 "Oplata za opoznienie: " + this.project.lateFee + "\n" +
                 "Deadline: " + this.project.deadline.toString() + "\n" +
-                "Aby wrocic wpisz back" + "\n";
+                "Aby wybrac projekt i podpisac kontrakt wpisz wybieram, aby wrocic wpisz back" + "\n";
 
         return MenuDisplay;
     }
@@ -44,7 +42,7 @@ public class AvailableProjectTabMenu implements IMenu {
             return new AvailableProjectsMenu();
         }
         else if(decision.equals("wybieram")){
-            PlayerActions.signContract(this.project);
+            PlayerActions.SignContract(this.project);
             return new AvailableProjectsMenu();
         }
         return new AvailableProjectsMenu();

@@ -1,7 +1,9 @@
 package Menus;
 
+import Game.Actions.PlayerActions;
+import Menus.AvailableWorkers.AvailableWorkersMenu;
+import Menus.YourProjects.YourProjectsMenu;
 import Menus.AvailableProjects.AvailableProjectsMenu;
-import Menus.NewProjects.NewProjectsMenu;
 
 public class MainMenu implements IMenu{
     @Override
@@ -11,7 +13,7 @@ public class MainMenu implements IMenu{
                         "1. Sprawdz nowe projekty\n" +
                         "2. Sprawdz aktywne projekty\n" +
                         "3. Spedz dzien na szukaniu projektow\n" +
-                        "4. Sprawdz nowych pracownikow\n" +
+                        "4. Sprawdz wolnych pracownikow\n" +
                         "5. Sprawdz obecnych pracownikow\n" +
                         "6. przeznacz dzień na rozliczenia z urzędami\n";
     }
@@ -20,13 +22,20 @@ public class MainMenu implements IMenu{
     public IMenu HandleDecision(String decision) {
         switch (decision){
             case "1" ->{
-                return new NewProjectsMenu();
-            }
-            case "2" ->{
                 return new AvailableProjectsMenu();
             }
+            case "2" ->{
+                return new YourProjectsMenu();
+            }
+            case "3" ->{
+                PlayerActions.SpendDaySearchingForProject();
+                return new AvailableProjectsMenu();
+            }
+            case "4" ->{
+                return new AvailableWorkersMenu();
+            }
             default -> {
-                return new NewProjectsMenu();
+                return new AvailableProjectsMenu();
             }
         }
     }

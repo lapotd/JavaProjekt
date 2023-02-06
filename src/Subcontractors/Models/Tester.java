@@ -8,6 +8,7 @@ public class Tester extends Worker{
 
     public Tester(Double pay, Double hireFee, Double fireFee){
         super(pay,hireFee,fireFee);
+        super.workerType = WorkerType.tester;
     }
 
     public void Work(Project project){

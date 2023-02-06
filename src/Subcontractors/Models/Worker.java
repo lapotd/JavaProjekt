@@ -1,6 +1,9 @@
 package Subcontractors.Models;
 
+import Subcontractors.Enums.WorkerType;
+
 public class Worker {
+    public WorkerType workerType;
     public Double pay;
     public Double hireFee;
     public Double fireFee;

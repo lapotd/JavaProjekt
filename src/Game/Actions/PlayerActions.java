@@ -1,24 +1,48 @@
 package Game.Actions;
 
 import Game.Models.Game;
-import Game.Models.ProjectSearch;
 import ProjectGenerator.Models.Project;
 import ProjectGenerator.Models.WorkDay;
 import Subcontractors.Enums.Skills;
+import Subcontractors.Models.Worker;
 
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
 
 public class PlayerActions {
-    public static void signContract(Project project){
-        Game.getGame().projects.add(project);
-        Game.getGame().availableProjects.remove(project);
+    public static void SignContract(Project project){
+        Game game = Game.getGame();
+        game.projects.add(project);
+        game.availableProjects.remove(project);
     }
 
-    public static void spendDaySearchingForProject(ProjectSearch projectSearch, Game game){
-        projectSearch.SpendDaySearching();
-        Game.getGame().dayEnd.DayEnds();
+    public static void SpendDaySearchingForProject(){
+        Game game = Game.getGame();
+        game.projectSearch.SpendDaySearching();
+        game.dayEnd.DayEnds();
+    }
+
+    public static void HireWorker(Worker worker){
+        Game game = Game.getGame();
+        if(game.balance < worker.hireFee){
+            System.out.println("Nie stac cie na oplate zatrudnienia!");
+            return;
+        }
+        game.balance -= worker.hireFee;
+        game.workers.add(worker);
+        game.availableWorkers.remove(worker);
+    }
+
+    public static void FireWorker(Worker worker){
+        Game game = Game.getGame();
+        if(game.balance < worker.fireFee){
+            System.out.println("Nie stac cie na oplate zwolnienia!");
+            return;
+        }
+        game.balance -= worker.fireFee;
+        game.workers.remove(worker);
+
     }
 
     public static boolean spendDayWorking(Project project, Skills skill){

@@ -7,5 +7,6 @@ public class Seller extends Worker{
 
     public Seller(Double pay, Double hireFee, Double fireFee){
         super(pay,hireFee,fireFee);
+        super.workerType = WorkerType.seller;
     }
 }

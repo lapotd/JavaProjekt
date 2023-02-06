@@ -36,6 +36,15 @@ public class WorkDays {
                 this.wordpressWorkDays, this.prestashopWorkDays};
     }
 
+    public String ToString(){
+        WorkDay[] tableOfWorkDays = this.ToArray();
+        String output = "\n";
+        for(WorkDay day : tableOfWorkDays){
+            output = output + day.skillRequired.toString() + " " +day.amount + "dni do ukonczenia" + "\n";
+        }
+        return output;
+    }
+
     public List<WorkDay> ToList(){
         return Arrays.stream(this.ToArray()).toList();
     }

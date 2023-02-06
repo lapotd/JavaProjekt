@@ -10,6 +10,7 @@ import Subcontractors.Models.Friend;
 import Subcontractors.Models.Player;
 import Subcontractors.Models.Worker;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,10 @@ public class Game {
         this.balance = 2000.0;
         this.friends = WorkerGenerator.GenerateFriends();
         this.projectSearch = ProjectSearch.getProjectSearch();
+        this.availableWorkers = new ArrayList<Worker>();
+        this.availableProjects = new ArrayList<Project>();
+        this.projects = new ArrayList<Project>();
+        this.workers = new ArrayList<Worker>();
 
         this.availableWorkers.add(WorkerGenerator.GenerateCompanyWorker(WorkerType.programmer));
         this.availableWorkers.add(WorkerGenerator.GenerateCompanyWorker(WorkerType.programmer));

@@ -13,9 +13,9 @@ public class NameGenerator {
     private static final String[] clientName =
             {"intel","microsoft","zabka","FBI","KGB"};
     public static String GenerateProjectName(Random randomizer){
-        int firstChoice = randomizer.nextInt(3);
-        int secondChoice = randomizer.nextInt(3);
-        int thirdChoice = randomizer.nextInt(3);
+        int firstChoice = randomizer.nextInt(1000) % 3;
+        int secondChoice = randomizer.nextInt(10000) % 3;
+        int thirdChoice = randomizer.nextInt(100000) % 3;
 
         return firstColumn[firstChoice]+secondColumn[secondChoice]+thirdColumn[thirdChoice];
     }

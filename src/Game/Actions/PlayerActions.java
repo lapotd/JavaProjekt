@@ -11,9 +11,9 @@ import java.util.Optional;
 import java.util.Random;
 
 public class PlayerActions {
-    public static void signContract(Project project, Game game){
-        game.projects.add(project);
-        game.availableProjects.remove(project);
+    public static void signContract(Project project){
+        Game.getGame().projects.add(project);
+        Game.getGame().availableProjects.remove(project);
     }
 
     public static void spendDaySearchingForProject(ProjectSearch projectSearch, Game game){
